@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,13 +56,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sage: {
-					DEFAULT: 'hsl(var(--sage))',
-					dark: 'hsl(var(--sage-dark))'
-				},
-				cream: 'hsl(var(--cream))',
-				gold: 'hsl(var(--gold))',
-				'warm-brown': 'hsl(var(--warm-brown))',
+        'dainty-pink': {
+          DEFAULT: 'hsl(var(--dainty-pink))',
+          dark: 'hsl(var(--dainty-pink-dark))'
+        },
+        'dainty-blue': {
+          DEFAULT: 'hsl(var(--dainty-blue))',
+          dark: 'hsl(var(--dainty-blue-dark))'
+        },
+        'dainty-cream': 'hsl(var(--dainty-cream))',
+        'dainty-gray': 'hsl(var(--dainty-gray))',
+        'dainty-lavender': 'hsl(var(--dainty-lavender))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

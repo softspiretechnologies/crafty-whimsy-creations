@@ -4,21 +4,21 @@ import { ArrowDown, Sparkles } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cream via-sage/20 to-gold/10 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-dainty-cream via-dainty-pink/10 to-dainty-blue/10 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 animate-pulse">
-        <Sparkles className="w-8 h-8 text-gold opacity-60" />
+        <Sparkles className="w-8 h-8 text-primary opacity-60" />
       </div>
       <div className="absolute bottom-32 right-16 animate-pulse delay-1000">
-        <Sparkles className="w-6 h-6 text-sage-dark opacity-40" />
+        <Sparkles className="w-6 h-6 text-secondary opacity-40" />
       </div>
       <div className="absolute top-1/3 right-20 animate-pulse delay-500">
-        <Sparkles className="w-4 h-4 text-gold opacity-80" />
+        <Sparkles className="w-4 h-4 text-primary opacity-80" />
       </div>
 
       <div className="container px-6 text-center">
         <div className="max-w-4xl mx-auto animate-fade-up">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-warm-brown mb-6 leading-tight">
+          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-dainty-gray mb-6 leading-tight">
             Handcrafted
             <span className="text-gradient block">with Love</span>
           </h1>
@@ -31,14 +31,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
-              className="bg-gold hover:bg-gold/90 text-warm-brown font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Explore Collection
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-sage-dark text-sage-dark hover:bg-sage-dark hover:text-white px-8 py-6 text-lg rounded-xl transition-all duration-300"
+              className="border-2 border-dainty-blue-dark text-dainty-blue-dark hover:bg-dainty-blue-dark hover:text-white px-8 py-6 text-lg rounded-xl transition-all duration-300"
             >
               Custom Orders
             </Button>

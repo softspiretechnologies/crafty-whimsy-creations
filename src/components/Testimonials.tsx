@@ -24,10 +24,10 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-warm-brown mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-dainty-gray mb-6">
             What Our Customers Say
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -39,14 +39,14 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.name} 
-              className="bg-sage/10 rounded-2xl p-8 relative animate-fade-up"
+              className="bg-dainty-blue/20 rounded-2xl p-8 relative animate-fade-up"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <Quote className="w-8 h-8 text-gold mb-6" />
+              <Quote className="w-8 h-8 text-primary mb-6" />
               
               <div className="flex mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <div key={i} className="w-5 h-5 bg-gold rounded-full mr-1"></div>
+                  <div key={i} className="w-5 h-5 bg-primary rounded-full mr-1"></div>
                 ))}
               </div>
 
@@ -54,8 +54,8 @@ const Testimonials = () => {
                 "{testimonial.content}"
               </p>
 
-              <div className="border-t border-sage pt-4">
-                <div className="font-semibold text-warm-brown">{testimonial.name}</div>
+              <div className="border-t border-dainty-blue pt-4">
+                <div className="font-semibold text-dainty-gray">{testimonial.name}</div>
                 <div className="text-sm text-muted-foreground">{testimonial.role}</div>
               </div>
             </div>

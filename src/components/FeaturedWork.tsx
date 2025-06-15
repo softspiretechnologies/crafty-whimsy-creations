@@ -19,27 +19,27 @@ const FeaturedWork = () => {
       title: "Botanical Wall Art",
       description: "Hand-pressed flower arrangement in custom frame",
       price: "$85",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80&w=400"
+      image: "https://images.unsplash.com/photo-1516634591446-24c609e2d634?auto=format&fit=crop&q=80&w=400"
     },
     {
       title: "Memory Scrapbook",
       description: "Personalized photo album with handcrafted embellishments",
       price: "$95",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&q=80&w=400"
+      image: "https://images.unsplash.com/photo-1506485338023-6ce5f38de033?auto=format&fit=crop&q=80&w=400"
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-sage/10 to-gold/5">
+    <section className="py-20 bg-gradient-to-br from-dainty-pink/5 to-dainty-blue/5">
       <div className="container px-6">
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {stats.map((stat, index) => (
             <div key={stat.label} className="text-center animate-fade-up" style={{ animationDelay: `${index * 200}ms` }}>
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gold/20 rounded-full mb-4">
-                <stat.icon className="w-8 h-8 text-gold" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
+                <stat.icon className="w-8 h-8 text-primary" />
               </div>
-              <div className="font-playfair text-3xl font-bold text-warm-brown mb-2">{stat.value}</div>
+              <div className="font-playfair text-3xl font-bold text-dainty-gray mb-2">{stat.value}</div>
               <div className="text-muted-foreground">{stat.label}</div>
             </div>
           ))}
@@ -47,7 +47,7 @@ const FeaturedWork = () => {
 
         {/* Featured Items */}
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-warm-brown mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-dainty-gray mb-6">
             Featured Creations
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -71,11 +71,11 @@ const FeaturedWork = () => {
               </div>
               <div className="p-6">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-playfair text-xl font-semibold text-warm-brown">{item.title}</h3>
-                  <span className="text-xl font-bold text-gold">{item.price}</span>
+                  <h3 className="font-playfair text-xl font-semibold text-dainty-gray">{item.title}</h3>
+                  <span className="text-xl font-bold text-primary">{item.price}</span>
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">{item.description}</p>
-                <button className="w-full bg-sage hover:bg-sage-dark text-warm-brown font-semibold py-3 rounded-lg transition-colors duration-300">
+                <button className="w-full bg-secondary hover:bg-dainty-blue-dark text-dainty-gray font-semibold py-3 rounded-lg transition-colors duration-300">
                   View Details
                 </button>
               </div>
