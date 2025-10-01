@@ -46,7 +46,17 @@ const Categories = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Mobile: Horizontal scroll */}
+        <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scrollbar md:hidden">
+          {categories.map((category) => (
+            <div key={category.title} className="flex-shrink-0 w-[280px] snap-center animate-fade-up">
+              <CategoryCard {...category} />
+            </div>
+          ))}
+        </div>
+        
+        {/* Desktop: Grid layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {categories.map((category) => (
             <div key={category.title} className="animate-fade-up">
               <CategoryCard {...category} />
