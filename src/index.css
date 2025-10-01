@@ -46,6 +46,13 @@
     --dainty-cream: 40 50% 98%;
     --dainty-gray: 220 10% 25%;
     --dainty-lavender: 250 60% 93%;
+    
+    /* Enhanced Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(340 82% 80%) 0%, hsl(250 60% 85%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(40 50% 98%) 0%, hsl(340 82% 95%) 50%, hsl(200 82% 95%) 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(340 70% 70% / 0.25);
+    --shadow-soft: 0 4px 20px -4px hsl(220 10% 25% / 0.08);
+    --shadow-hover: 0 20px 60px -15px hsl(340 70% 70% / 0.35);
   }
 
   .dark {
@@ -100,15 +107,19 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent;
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+    @apply transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_-15px_hsl(340_70%_70%_/_0.35)];
   }
   
   .craft-card {
-    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
+    @apply bg-white rounded-3xl shadow-[0_4px_20px_-4px_hsl(220_10%_25%_/_0.08)] hover:shadow-[0_20px_60px_-15px_hsl(340_70%_70%_/_0.35)] transition-all duration-500 overflow-hidden;
+  }
+  
+  .craft-border {
+    @apply border-2 border-dainty-pink/20 rounded-2xl;
   }
   
   .hide-scrollbar {
@@ -118,5 +129,32 @@
   
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  
+  .decorative-dots {
+    background-image: radial-gradient(circle, hsl(340 82% 80% / 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(340 82% 90% / 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    100% {
+      left: 100%;
+    }
   }
 }

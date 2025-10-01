@@ -57,13 +57,18 @@ const ProductCarousel = () => {
   ];
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-br from-dainty-cream via-dainty-pink/10 to-dainty-lavender/10">
-      <div className="container px-4 md:px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-dainty-gray mb-4 md:mb-6">
-            Featured Collection
+    <section className="py-12 md:py-20 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-dainty-cream via-white to-dainty-lavender/20"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="text-center mb-8 md:mb-12 animate-fade-up">
+          <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-dainty-gray mb-3 md:mb-4">
+            Featured <span className="text-gradient">Creations</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Discover our handpicked selection of the most beautiful arrangements
           </p>
         </div>
@@ -76,22 +81,25 @@ const ProductCarousel = () => {
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-1 md:-ml-2 lg:-ml-4">
-            {featuredProducts.map((product) => (
+            {featuredProducts.map((product, index) => (
               <CarouselItem key={product.id} className="pl-1 md:pl-2 lg:pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3">
-                <div className="group craft-card h-full">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+                <div 
+                  className="group craft-card h-full shimmer"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl">
                     <img 
                       src={product.image} 
                       alt={product.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute top-2 right-2 md:top-3 md:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="p-1.5 md:p-2 bg-white/90 rounded-full shadow-lg hover:bg-white transition-colors">
+                    <div className="absolute top-2 right-2 md:top-3 md:right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <button className="p-1.5 md:p-2 bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_4px_20px_-4px_hsl(220_10%_25%_/_0.15)] hover:bg-white transition-all hover:scale-110">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 text-primary" />
                       </button>
                     </div>
                     <div className="absolute top-2 left-2 md:top-3 md:left-3">
-                      <span className="bg-primary/90 text-white text-xs px-2 md:px-3 py-1 rounded-full font-medium">
+                      <span className="bg-gradient-to-r from-primary/95 to-primary text-white text-xs px-2 md:px-3 py-1 rounded-full font-medium shadow-lg">
                         {product.category}
                       </span>
                     </div>
@@ -103,12 +111,12 @@ const ProductCarousel = () => {
                       <h3 className="font-playfair text-lg md:text-xl font-semibold text-dainty-gray line-clamp-2 flex-1">
                         {product.title}
                       </h3>
-                      <span className="text-lg md:text-xl font-bold text-primary ml-2 md:ml-3">
+                      <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent ml-2 md:ml-3">
                         {product.price}
                       </span>
                     </div>
                     
-                    <p className="text-muted-foreground text-sm mb-3 md:mb-4 line-clamp-2">
+                    <p className="text-muted-foreground text-sm mb-3 md:mb-4 line-clamp-2 leading-relaxed">
                       {product.description}
                     </p>
                     
@@ -117,7 +125,7 @@ const ProductCarousel = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i} 
-                            className={`w-3 h-3 md:w-4 md:h-4 ${i < product.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                            className={`w-3 h-3 md:w-4 md:h-4 transition-colors ${i < product.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
                           />
                         ))}
                         <span className="text-xs text-muted-foreground ml-1 md:ml-2">
@@ -127,7 +135,7 @@ const ProductCarousel = () => {
                     </div>
                     
                     <Button 
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2.5 md:py-3 rounded-xl transition-all duration-300 group-hover:shadow-lg text-sm md:text-base"
+                      className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-semibold py-2.5 md:py-3 rounded-xl transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-10px_hsl(340_70%_70%_/_0.3)] text-sm md:text-base shimmer"
                       size="sm"
                     >
                       <ShoppingBag className="w-3 h-3 md:w-4 md:h-4 mr-2" />
@@ -138,14 +146,14 @@ const ProductCarousel = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-12 bg-white shadow-lg border-2 border-primary/20 hover:bg-primary hover:text-white" />
-          <CarouselNext className="hidden md:flex -right-12 bg-white shadow-lg border-2 border-primary/20 hover:bg-primary hover:text-white" />
+          <CarouselPrevious className="hidden md:flex -left-12 bg-white hover:bg-white shadow-[0_10px_40px_-10px_hsl(220_10%_25%_/_0.15)] border-none hover:shadow-[0_20px_60px_-15px_hsl(340_70%_70%_/_0.25)] hover:scale-110 transition-all duration-300" />
+          <CarouselNext className="hidden md:flex -right-12 bg-white hover:bg-white shadow-[0_10px_40px_-10px_hsl(220_10%_25%_/_0.15)] border-none hover:shadow-[0_20px_60px_-15px_hsl(340_70%_70%_/_0.25)] hover:scale-110 transition-all duration-300" />
         </Carousel>
 
         <div className="text-center mt-8 md:mt-12">
           <Button 
             size="lg"
-            className="w-full sm:w-auto bg-secondary hover:bg-dainty-blue-dark text-dainty-gray font-semibold px-6 md:px-8 py-3 rounded-xl transition-all duration-300 hover:shadow-lg"
+            className="w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-dainty-gray font-semibold px-8 md:px-10 py-4 md:py-5 rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_hsl(200_60%_75%_/_0.3)] text-sm md:text-base"
           >
             View All Products
           </Button>
