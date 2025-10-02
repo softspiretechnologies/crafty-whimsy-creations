@@ -1,7 +1,10 @@
 import { ShoppingBag, Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const navigate = useNavigate();
+  
   const products = [
     {
       id: 1,
@@ -162,8 +165,9 @@ const Products = () => {
               className="flex-shrink-0 w-[280px] snap-center"
             >
               <div 
-                className="group craft-card animate-fade-up h-full"
+                className="group craft-card animate-fade-up h-full cursor-pointer"
                 style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => navigate(`/product/${product.id}`)}
               >
                 <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                   <img 
@@ -229,8 +233,9 @@ const Products = () => {
           {products.map((product, index) => (
             <div 
               key={product.id} 
-              className="group craft-card animate-fade-up"
+              className="group craft-card animate-fade-up cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
+              onClick={() => navigate(`/product/${product.id}`)}
             >
               <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                 <img 
