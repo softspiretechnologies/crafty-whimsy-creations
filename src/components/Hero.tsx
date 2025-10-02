@@ -60,9 +60,13 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle">
-          <ArrowDown className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground opacity-60" />
-        </div>
+        <button 
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce-gentle hover:scale-110 transition-transform cursor-pointer p-2 rounded-full hover:bg-primary/10"
+          aria-label="Scroll to content"
+        >
+          <ArrowDown className="w-6 h-6 md:w-8 md:h-8 text-primary opacity-80" />
+        </button>
       </div>
     </section>
   );
