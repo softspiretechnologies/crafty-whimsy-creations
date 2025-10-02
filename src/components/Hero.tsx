@@ -43,7 +43,7 @@ const Hero = () => {
             that tell your story with artisanal elegance.
           </p>
           
-          <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center mb-8 md:mb-12 px-4">
+          <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center mb-20 md:mb-24 px-4">
             <Button 
               size="lg" 
               className="w-full sm:w-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-semibold px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg rounded-2xl shadow-[0_10px_40px_-10px_hsl(340_70%_70%_/_0.25)] hover:shadow-[0_20px_60px_-15px_hsl(340_70%_70%_/_0.35)] transition-all duration-500 hover:-translate-y-1 shimmer"
