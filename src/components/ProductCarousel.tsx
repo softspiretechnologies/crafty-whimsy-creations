@@ -1,7 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Heart, Star } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ProductCarousel = () => {
   const navigate = useNavigate();
@@ -90,7 +90,8 @@ const ProductCarousel = () => {
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => navigate(`/product/${product.id}`)}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl">
+                  <Link to={`/product/${product.id}`} aria-label={`${product.title} details`} className="block focus:outline-none">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl">
                     <img 
                       src={product.image} 
                       alt={product.title}
@@ -108,12 +109,15 @@ const ProductCarousel = () => {
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
+                  </Link>
                   
                   <div className="p-4 md:p-6">
                     <div className="flex items-start justify-between mb-2 md:mb-3">
-                      <h3 className="font-playfair text-lg md:text-xl font-semibold text-dainty-gray line-clamp-2 flex-1">
-                        {product.title}
-                      </h3>
+                      <Link to={`/product/${product.id}`} aria-label={`${product.title} details`} className="flex-1">
+                        <h3 className="font-playfair text-lg md:text-xl font-semibold text-dainty-gray line-clamp-2">
+                          {product.title}
+                        </h3>
+                      </Link>
                       <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent ml-2 md:ml-3">
                         {product.price}
                       </span>
