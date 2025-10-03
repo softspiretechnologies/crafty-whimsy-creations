@@ -1,9 +1,20 @@
 import { ShoppingBag, Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const Products = () => {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 8;
   
   const products = [
     {
@@ -130,6 +141,18 @@ const Products = () => {
 
   const categories = ["All", "Invitations", "Wall Art", "Paper Crafts", "Albums", "Cards", "Decorations", "Journals", "Gift Wrap", "Frames"];
 
+  // Pagination logic
+  const totalPages = Math.ceil(products.length / productsPerPage);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+
   return (
     <section className="py-12 md:py-20 bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
       <div className="container px-4 md:px-6">
@@ -159,7 +182,7 @@ const Products = () => {
 
         {/* Mobile: Horizontal scroll */}
         <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scrollbar md:hidden">
-          {products.map((product, index) => (
+          {currentProducts.map((product, index) => (
             <div 
               key={product.id} 
               className="flex-shrink-0 w-[280px] snap-center"
@@ -230,7 +253,7 @@ const Products = () => {
         
         {/* Desktop: Grid layout */}
         <div className="hidden md:grid md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+          {currentProducts.map((product, index) => (
             <div 
               key={product.id} 
               className="group craft-card animate-fade-up cursor-pointer"
@@ -295,13 +318,35 @@ const Products = () => {
           ))}
         </div>
         
-        <div className="text-center mt-8 md:mt-12">
-          <Button 
-            size="lg"
-            className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 md:px-8 py-3 rounded-xl"
-          >
-            View All Products
-          </Button>
+        {/* Pagination */}
+        <div className="mt-8 md:mt-12 flex justify-center">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious 
+                  onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+                  className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                />
+              </PaginationItem>
+              {[...Array(totalPages)].map((_, index) => (
+                <PaginationItem key={index}>
+                  <PaginationLink
+                    onClick={() => handlePageChange(index + 1)}
+                    isActive={currentPage === index + 1}
+                    className="cursor-pointer"
+                  >
+                    {index + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext 
+                  onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+                  className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </div>
     </section>
