@@ -1,8 +1,10 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Heart, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCarousel = () => {
+  const navigate = useNavigate();
   const featuredProducts = [
     {
       id: 1,
@@ -84,8 +86,9 @@ const ProductCarousel = () => {
             {featuredProducts.map((product, index) => (
               <CarouselItem key={product.id} className="pl-1 md:pl-2 lg:pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3">
                 <div 
-                  className="group craft-card h-full shimmer"
+                  className="group craft-card h-full shimmer cursor-pointer"
                   style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => navigate(`/product/${product.id}`)}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl">
                     <img 
@@ -137,6 +140,9 @@ const ProductCarousel = () => {
                     <Button 
                       className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-semibold py-2.5 md:py-3 rounded-xl transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-10px_hsl(340_70%_70%_/_0.3)] text-sm md:text-base shimmer"
                       size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                     >
                       <ShoppingBag className="w-3 h-3 md:w-4 md:h-4 mr-2" />
                       Add to Cart
