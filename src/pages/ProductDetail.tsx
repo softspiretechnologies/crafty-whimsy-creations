@@ -18,7 +18,7 @@ const ProductDetail = () => {
       title: "Floral Wedding Invitation Set",
       description: "Complete wedding suite with RSVP cards",
       fullDescription: "Elevate your wedding celebration with our exquisite handcrafted floral wedding invitation set. Each piece is meticulously crafted with premium cardstock and adorned with delicate watercolor florals. The set includes main invitation cards, RSVP cards, information cards, and elegant envelopes with custom wax seals.",
-      price: "$125",
+      price: "₹10,000",
       images: [
         "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&q=80&w=800",
         "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800",
