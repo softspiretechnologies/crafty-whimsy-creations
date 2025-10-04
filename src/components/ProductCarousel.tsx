@@ -164,6 +164,7 @@ const ProductCarousel = () => {
           <Button 
             size="lg"
             className="w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-dainty-gray font-semibold px-8 md:px-10 py-4 md:py-5 rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_hsl(200_60%_75%_/_0.3)] text-sm md:text-base"
+            onClick={() => navigate("/products")}
           >
             View All Products
           </Button>
