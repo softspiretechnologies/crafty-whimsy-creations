@@ -75,13 +75,13 @@ const Cart = () => {
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('$', ''));
+      const price = parseFloat(item.price.replace('₹', '').replace('$', ''));
       return total + (price * item.quantity);
     }, 0).toFixed(2);
   };
 
   const calculateSubtotal = (item: CartItem) => {
-    const price = parseFloat(item.price.replace('$', ''));
+    const price = parseFloat(item.price.replace('₹', '').replace('$', ''));
     return (price * item.quantity).toFixed(2);
   };
 
@@ -179,7 +179,7 @@ const Cart = () => {
 
                         <div className="flex items-center gap-4">
                           <span className="text-lg font-bold text-primary">
-                            ${calculateSubtotal(item)}
+                            ₹{calculateSubtotal(item)}
                           </span>
                           <Button
                             variant="ghost"
@@ -207,7 +207,7 @@ const Cart = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
-                    <span>${calculateTotal()}</span>
+                    <span>₹{calculateTotal()}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Shipping</span>
@@ -215,7 +215,7 @@ const Cart = () => {
                   </div>
                   <div className="border-t pt-3 flex justify-between text-lg font-semibold text-dainty-gray">
                     <span>Total</span>
-                    <span className="text-primary">${calculateTotal()}</span>
+                    <span className="text-primary">₹{calculateTotal()}</span>
                   </div>
                 </div>
 
