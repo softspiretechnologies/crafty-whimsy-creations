@@ -21,9 +21,11 @@ const Header = () => {
               <Heart className="w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="ghost" size="icon">
-            <ShoppingBag className="w-5 h-5" />
-          </Button>
+          <Link to="/cart">
+            <Button variant="ghost" size="icon">
+              <ShoppingBag className="w-5 h-5" />
+            </Button>
+          </Link>
         </nav>
       </div>
     </header>

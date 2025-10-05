@@ -101,6 +101,47 @@ const AllProducts = () => {
     }
   };
 
+  const addToCart = (e: React.MouseEvent, product: typeof allProducts[0]) => {
+    e.stopPropagation();
+    try {
+      const saved = localStorage.getItem('cart');
+      const cart = saved ? JSON.parse(saved) : [];
+      
+      const existingItem = cart.find((item: any) => item.product_id === product.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        toast({
+          title: "Updated cart",
+          description: `${product.title} quantity updated`,
+        });
+      } else {
+        const newItem = {
+          id: crypto.randomUUID(),
+          product_id: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+          quantity: 1,
+        };
+        cart.push(newItem);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        toast({
+          title: "Added to cart",
+          description: `${product.title} has been added to your cart`,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to add to cart",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
       <div className="container px-4 md:px-6 py-8 md:py-12">
@@ -229,10 +270,7 @@ const AllProducts = () => {
                   <Button
                     className="w-full bg-secondary hover:bg-dainty-blue-dark text-dainty-gray font-semibold py-1.5 md:py-2 text-xs md:text-sm rounded-lg transition-colors duration-300"
                     size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Add to cart logic here
-                    }}
+                    onClick={(e) => addToCart(e, product)}
                   >
                     <ShoppingBag className="w-3 h-3 md:w-4 md:h-4 md:mr-2" />
                     <span className="hidden md:inline">Add to Cart</span>
