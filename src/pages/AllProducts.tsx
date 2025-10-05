@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { products as allProducts, categories } from "@/data/products";
+import { useToast } from "@/hooks/use-toast";
 import {
   Pagination,
   PaginationContent,
@@ -15,6 +16,7 @@ import {
 
 const AllProducts = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,6 +49,56 @@ const AllProducts = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
+  };
+
+  const toggleWishlist = (e: React.MouseEvent, product: typeof allProducts[0]) => {
+    e.stopPropagation();
+    try {
+      const saved = localStorage.getItem('wishlist');
+      const wishlist = saved ? JSON.parse(saved) : [];
+      
+      const exists = wishlist.find((item: any) => item.product_id === product.id);
+      
+      if (exists) {
+        const updated = wishlist.filter((item: any) => item.product_id !== product.id);
+        localStorage.setItem('wishlist', JSON.stringify(updated));
+        toast({
+          title: "Removed from wishlist",
+          description: `${product.title} has been removed from your wishlist`,
+        });
+      } else {
+        const newItem = {
+          id: crypto.randomUUID(),
+          product_id: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+        };
+        wishlist.push(newItem);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        toast({
+          title: "Added to wishlist",
+          description: `${product.title} has been added to your wishlist`,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to update wishlist",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const isInWishlist = (productId: number) => {
+    try {
+      const saved = localStorage.getItem('wishlist');
+      const wishlist = saved ? JSON.parse(saved) : [];
+      return wishlist.some((item: any) => item.product_id === productId);
+    } catch {
+      return false;
+    }
   };
 
   return (
@@ -126,8 +178,13 @@ const AllProducts = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="p-1.5 bg-white/90 rounded-full shadow-lg hover:bg-white transition-colors">
-                      <Heart className="w-4 h-4 text-primary" />
+                    <button 
+                      onClick={(e) => toggleWishlist(e, product)}
+                      className="p-1.5 bg-white/90 rounded-full shadow-lg hover:bg-white transition-colors"
+                    >
+                      <Heart 
+                        className={`w-4 h-4 ${isInWishlist(product.id) ? 'text-primary fill-current' : 'text-primary'}`}
+                      />
                     </button>
                   </div>
                   <div className="absolute top-2 left-2">
