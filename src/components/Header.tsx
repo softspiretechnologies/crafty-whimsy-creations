@@ -11,11 +11,6 @@ const Header = () => {
         </Link>
         
         <nav className="flex items-center gap-3">
-          <Link to="/products">
-            <Button variant="ghost" size="sm" className="text-dainty-gray">
-              Products
-            </Button>
-          </Link>
           <Link to="/wishlist">
             <Button variant="ghost" size="icon" className="relative">
               <Heart className="w-5 h-5" />
