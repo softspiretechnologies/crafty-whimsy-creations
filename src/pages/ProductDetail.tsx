@@ -55,20 +55,9 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
       <Header />
-      {/* Navigation */}
-      <div className="container px-4 md:px-6 py-6 pt-24">
-        <Button
-          variant="ghost"
-          onClick={() => navigate(-1)}
-          className="hover:bg-primary/10"
-        >
-          <ChevronLeft className="w-4 h-4 mr-2" />
-          Back to Products
-        </Button>
-      </div>
-
+      
       {/* Product Details */}
-      <section className="container px-4 md:px-6 py-8 md:py-12">
+      <section className="container px-4 md:px-6 py-8 md:py-12 pt-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Image Gallery */}
           <div className="space-y-4">
