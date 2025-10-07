@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShoppingBag, Heart, Star, Search } from "lucide-react";
+import { ShoppingBag, Heart, Star, Search, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
@@ -147,6 +147,16 @@ const AllProducts = () => {
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
       <Header />
       <div className="container px-4 md:px-6 py-8 md:py-12 pt-24">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          className="mb-6 gap-2"
+          onClick={() => navigate("/")}
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Button>
+
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-dainty-gray mb-4">
