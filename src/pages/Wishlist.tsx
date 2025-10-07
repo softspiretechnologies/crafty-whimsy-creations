@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Heart, ShoppingBag, Trash2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 
@@ -56,6 +57,7 @@ const Wishlist = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-white to-dainty-pink/5">
+      <Header />
       <div className="container mx-auto px-4 py-8 pt-24">
         <Link to="/">
           <Button variant="ghost" size="sm" className="mb-6">

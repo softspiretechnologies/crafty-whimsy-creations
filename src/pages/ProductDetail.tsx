@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Heart, Star, ChevronLeft, Minus, Plus, Truck, Shield, RefreshCw } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const ProductDetail = () => {
@@ -53,8 +54,9 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
+      <Header />
       {/* Navigation */}
-      <div className="container px-4 md:px-6 py-6">
+      <div className="container px-4 md:px-6 py-6 pt-24">
         <Button
           variant="ghost"
           onClick={() => navigate(-1)}

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { products as allProducts, categories } from "@/data/products";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
 import {
   Pagination,
   PaginationContent,
@@ -144,7 +145,8 @@ const AllProducts = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dainty-cream via-dainty-pink/5 to-dainty-blue/5">
-      <div className="container px-4 md:px-6 py-8 md:py-12">
+      <Header />
+      <div className="container px-4 md:px-6 py-8 md:py-12 pt-24">
         {/* Back Button */}
         <Button
           variant="ghost"
